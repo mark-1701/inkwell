@@ -6,7 +6,9 @@ import Image from '@tiptap/extension-image';
 import TextAlign from '@tiptap/extension-text-align';
 import StarterKit from '@tiptap/starter-kit';
 
-export const getExtensions = (insertImage: InsertImage): Extensions => {
+export const getExtensions = (
+  insertImage: InsertImage,
+): Extensions => {
   return [
     StarterKit,
     TextAlign.configure({

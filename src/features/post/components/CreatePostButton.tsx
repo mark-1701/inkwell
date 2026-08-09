@@ -16,7 +16,7 @@ const CreatePostButton = () => {
   const [visible, setVisible] = useState(false);
   const [currentPostId, setCurrentPostId] = useState<string | null>(null);
 
-  // * handler del botón
+  // handler que busca algún post pendiente
 
   const handleCheckDraftPost = async () => {
     const resp = await checkDraftPost();
@@ -35,7 +35,7 @@ const CreatePostButton = () => {
     createNewPost();
   };
 
-  // * handlers de los botones footer del dialog
+  // handlers para los botones footer del dialog
 
   const continueDraft = () => {
     if (!currentPostId) return;
@@ -63,7 +63,7 @@ const CreatePostButton = () => {
     openPost(resp.data);
   };
 
-  // * otras funcionas
+  // otras funcionas
 
   const createNewPost = async () => {
     const resp = await createPost(

@@ -12,7 +12,7 @@ export const useCreatePostEditor = (postId: string) => {
    * por eso este hook es quien conoce la relación
    * entre editor y postId.
    */
-  const { insertImage } = useInsertImage(postId);
+  const { insertImage, isUploadingImage } = useInsertImage(postId);
 
   // ? Creamos Tiptap ya configurado para este post
   const editor = useEditor({
@@ -30,5 +30,6 @@ export const useCreatePostEditor = (postId: string) => {
   return {
     editor,
     insertImage,
+    isUploadingImage
   };
 };

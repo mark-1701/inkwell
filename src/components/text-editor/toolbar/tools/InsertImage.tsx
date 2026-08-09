@@ -4,6 +4,8 @@ import { PiImage } from 'react-icons/pi';
 import { ToolProps } from '../../types';
 import ToolBarButton from '../components/ToolbarButton';
 
+// todo: bloquear el botón cuando se esta subiendo un archivo
+
 const InsertImage = ({ editor, iconSize }: ToolProps) => {
   const { insertImage } = usePostEditor();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -23,7 +25,8 @@ const InsertImage = ({ editor, iconSize }: ToolProps) => {
 
       <ToolBarButton
         onClick={() => fileInputRef.current?.click()}
-        className="flex items-center justify-center gap-1 disabled:opacity-70"
+        className="flex items-center justify-center gap-1 disabled:opacity-50"
+        // disabled={isUploadingImage}
       >
         +
         <PiImage size={iconSize} className="text-gray-700" />
