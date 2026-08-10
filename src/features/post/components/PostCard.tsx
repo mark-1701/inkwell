@@ -1,11 +1,11 @@
 'use client';
 
 import { deletePost } from '@/actions';
+import { usePostStore } from '@/stores/post-store';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { GoTrash } from 'react-icons/go';
 import { toast } from 'react-toastify';
-
-// todo: bloquear el botón cuando se esta eliminando el post
 
 type PostCardProps = {
   id: string;
@@ -14,6 +14,8 @@ type PostCardProps = {
 
 const PostCard = ({ id, title }: PostCardProps) => {
   const router = useRouter();
+  const [isDeleting, setIsDeleting] = useState(false);
+  const deleteDraftPost = usePostStore(state => state.deleteDraftPost);
 
   const handleRedirection = (postId: string) => {
     const params = new URLSearchParams({ postId });
@@ -21,13 +23,17 @@ const PostCard = ({ id, title }: PostCardProps) => {
   };
 
   const handleDelete = async (id: string) => {
+    setIsDeleting(true);
     const resp = await deletePost(id);
 
     if (!resp.ok) {
+      setIsDeleting(false);
       toast.error('Ocurrió un error tratando de eliminar el post');
       return;
     }
 
+    deleteDraftPost(id);
+    setIsDeleting(false);
     router.refresh();
   };
 
@@ -41,7 +47,8 @@ const PostCard = ({ id, title }: PostCardProps) => {
       </p>
       <button
         className="invisible text-red-500 group-hover:visible
-          hover:cursor-pointer"
+          hover:cursor-pointer disabled:opacity-50"
+        disabled={isDeleting}
         onClick={() => handleDelete(id)}
       >
         <GoTrash size={18} className="" />

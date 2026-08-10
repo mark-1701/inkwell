@@ -20,5 +20,28 @@ body {
 }
 
 .tiptap {
-  @apply prose-sm prose-img:max-h-[400px] p-3 max-w-none focus:outline-none;
+  @apply prose-sm prose-img:max-h-[400px] max-w-none p-3 focus:outline-none;
+}
+
+.loader {
+  --color-1: #262626;
+  --size: 0.8px;
+
+  width: calc(48 * var(--size));
+  height: calc(48 * var(--size));
+  border: calc(5 * var(--size)) dotted var(--color-1);
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 2s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

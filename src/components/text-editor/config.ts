@@ -6,6 +6,8 @@ import Image from '@tiptap/extension-image';
 import TextAlign from '@tiptap/extension-text-align';
 import StarterKit from '@tiptap/starter-kit';
 
+// todo: resivar si insertImage requiere de un await
+
 export const getExtensions = (
   insertImage: InsertImage,
 ): Extensions => {

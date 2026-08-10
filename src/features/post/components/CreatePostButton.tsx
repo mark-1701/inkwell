@@ -9,30 +9,37 @@ import { replaceDraftPost } from '@/actions/post/replace-draft-post';
 import Dialog from '@/components/Dialog';
 import { initialPostData } from '../data/initialPostData';
 
-// todo: bloquear botón cuando se están haciendo las consultas
-
 const CreatePostButton = () => {
   const router = useRouter();
   const [visible, setVisible] = useState(false);
   const [currentPostId, setCurrentPostId] = useState<string | null>(null);
+  const [isCheakingDraftPost, setIsCheakingDraftPost] = useState(false);
+
+  /**
+   * No son necesarios los hooks 'isDiscardingDraft' y 'isCreatingPost porque
+   * al momento de ejecutar alguna función se oculta el modal automáticamente.
+   */
 
   // handler que busca algún post pendiente
-
   const handleCheckDraftPost = async () => {
+    setIsCheakingDraftPost(true);
     const resp = await checkDraftPost();
 
     if (!resp.ok) {
+      setIsCheakingDraftPost(false);
       toast.error('Ocurrió un error buscando el último post borrador');
       return;
     }
 
     if (resp.data) {
+      setIsCheakingDraftPost(false);
       setCurrentPostId(resp.data);
       setVisible(true);
       return;
     }
 
-    createNewPost();
+    await createNewPost();
+    setIsCheakingDraftPost(false);
   };
 
   // handlers para los botones footer del dialog
@@ -107,8 +114,10 @@ const CreatePostButton = () => {
   return (
     <div>
       <button
-        className="cursor-pointer rounded bg-blue-500 p-1 px-2 text-white"
+        className="cursor-pointer rounded bg-blue-500 p-1 px-2 text-white
+          disabled:opacity-50"
         onClick={handleCheckDraftPost}
+        disabled={isCheakingDraftPost}
       >
         Crear nuevo post
       </button>

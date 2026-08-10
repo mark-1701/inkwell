@@ -35,7 +35,7 @@ const PostSummary = ({ editor, postId }: PostSummaryProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     reset
   } = useForm<Inputs>();
 
@@ -46,13 +46,6 @@ const PostSummary = ({ editor, postId }: PostSummaryProps) => {
       title: draftPost.draft.title ?? ''
     });
   }, [reset, draftPost]);
-
-  // ? sincronizar el input de title si ocurre algún cambio en el state de
-  // ? del borrador almacenado en zustand.
-  // useEffect(() => {
-  //   if (!draftPost) return;
-  //   setValue('title', draftPost.draft.title ?? '');
-  // }, [draftPost, setValue]);
 
   const onSubmit: SubmitHandler<Inputs> = async data => {
     if (!draftPost) return;
@@ -75,8 +68,11 @@ const PostSummary = ({ editor, postId }: PostSummaryProps) => {
   };
 
   return (
-    <div className="w-90 rounded-md border border-gray-300 bg-white p-4 px-4">
-      <form className="flex flex-col gap-8" onSubmit={handleSubmit(onSubmit)}>
+    <div className="h-full w-90 rounded-md border border-gray-200 bg-gray-50">
+      <form
+        className="flex flex-col gap-8 border-b border-gray-200 bg-white p-4 pb-8 rounded-b-md"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <div>
           <div className="mb-4">
             <label htmlFor="title" className="mb-2 block font-medium">
@@ -101,7 +97,7 @@ const PostSummary = ({ editor, postId }: PostSummaryProps) => {
           <button
             className="w-full bg-gray-500 p-1 text-white hover:cursor-pointer
               disabled:invisible"
-            disabled={!isDirtyPost}
+            disabled={!isDirtyPost || isSubmitting}
             onClick={() => {
               undoDrafPostChanges(postId);
               window.location.reload();
@@ -114,8 +110,16 @@ const PostSummary = ({ editor, postId }: PostSummaryProps) => {
             type="submit"
             className={`${
               isNewPost ? 'bg-blue-500 text-white' : 'bg-yellow-300 text-black'
-              } w-full cursor-pointer p-1 disabled:bg-yellow-200`}
-            value={isNewPost ? 'Guardar' : 'Actualizar'}
+              } w-full cursor-pointer p-1 disabled:bg-yellow-200
+              disabled:opacity-50`}
+            disabled={isSubmitting}
+            value={
+              isSubmitting
+                ? 'Guardando...'
+                : isNewPost
+                  ? 'Guardar'
+                  : 'Actualizar'
+            }
           />
         </div>
       </form>
@@ -124,3 +128,10 @@ const PostSummary = ({ editor, postId }: PostSummaryProps) => {
 };
 
 export default PostSummary;
+
+// ? sincronizar el input de title si ocurre algún cambio en el state de
+// ? del borrador almacenado en zustand.
+// useEffect(() => {
+//   if (!draftPost) return;
+//   setValue('title', draftPost.draft.title ?? '');
+// }, [draftPost, setValue]);

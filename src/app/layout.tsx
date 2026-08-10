@@ -24,6 +24,7 @@ export default function RootLayout({
       <body className="bg-gray-50">
         <div className="hidden h-dvh min-[1024px]:flex">
           <NavMenu />
+
           <div className="w-full overflow-auto p-12 pb-8">{children}</div>
         </div>
 

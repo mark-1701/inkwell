@@ -10,7 +10,7 @@ type EditPostContentProps = {
 };
 
 const EditPostContent = ({ postId }: EditPostContentProps) => {
-  const { editor, insertImage } = useCreatePostEditor(postId);
+  const { editor, insertImage, isUploadingImage } = useCreatePostEditor(postId);
 
   if (!editor) return <p>Cargando editor...</p>;
 
@@ -19,7 +19,19 @@ const EditPostContent = ({ postId }: EditPostContentProps) => {
       <div className="flex h-full flex-col gap-8">
         <h1 className="text-3xl font-bold">Crear nuevo post</h1>
         <div className="flex min-h-0 flex-1 gap-4">
-          <div className="flex-1">
+          <div className="relative flex-1">
+            {/* loader */}
+            {isUploadingImage && (
+              <div
+                className="absolute top-1/2 left-1/2 flex h-[80px] w-[80px]
+                  -translate-1/2 items-center justify-center rounded-md border
+                  border-gray-300 bg-white shadow"
+              >
+                <span className="loader"></span>
+              </div>
+            )}
+
+            {/* editor de texto */}
             <TextEditor editor={editor} />
           </div>
           <div>
