@@ -5,7 +5,7 @@ const UnsupportedScreen = () => {
         <h1 className="text-2xl font-bold">Pantalla no compatible</h1>
 
         <p className="mt-4 text-gray-600">
-          Esta aplicación está diseñada para utilizarse en computadoras o
+          Esta pantalla está diseñada para utilizarse en computadoras o
           pantallas de mayor tamaño.
         </p>
 

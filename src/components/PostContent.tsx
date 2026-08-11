@@ -12,7 +12,7 @@ const PostContent = ({ content }: { content: JsonValue }) => {
   return (
     <div
       dangerouslySetInnerHTML={{ __html: html }}
-      className="prose prose-img:max-h-[600px] max-w-none"
+      className="prose-sm lg:prose prose-img:max-h-[600px] max-w-none"
     />
   );
 };

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import NavMenu from '@/components/NavMenu';
-import UnsupportedScreen from '@/components/UnsupportedScreen';
+import NavMenuDesktop from '@/components/NavMenuDesktop';
+import NavMenuMobile from '@/components/NavMenuMobile';
 import { geistMono, geistSans } from '../config/fonts';
 import { ToastProvider } from '../providers/ToastProvider';
 import './globals.css';
@@ -21,14 +21,23 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full
         antialiased`}
     >
-      <body className="bg-gray-50">
-        <div className="hidden h-dvh min-[1024px]:flex">
-          <NavMenu />
+      <body className="h-dvh bg-gray-50">
+        <div className="flex h-full flex-col lg:flex-row">
+          {/* Desktop */}
+          <div className="hidden lg:block">
+            <NavMenuDesktop />
+          </div>
 
-          <div className="w-full overflow-auto p-12 pb-8">{children}</div>
+          {/* Mobile / tablet */}
+          <div className="lg:hidden">
+            <NavMenuMobile />
+          </div>
+
+          <div className="w-full overflow-auto p-2 lg:p-12 lg:pb-8">
+            {children}
+          </div>
         </div>
 
-        <UnsupportedScreen />
         <ToastProvider />
       </body>
     </html>

@@ -5,15 +5,15 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { PiSidebar } from 'react-icons/pi';
 
-const NavMenu = () => {
+const NavMenuDesktop = () => {
   const isOpen = useSidebarStore(state => state.isOpen);
   const toggleIsOpen = useSidebarStore(state => state.toggleIsOpen);
 
   return (
-    <div
+    <aside
       className={clsx(
         isOpen ? 'w-[380px]' : 'w-[40px]',
-        'border-r border-gray-200 bg-gray-100 transition-all'
+        'h-full border-r border-gray-200 bg-gray-100 transition-all'
       )}
     >
       <div className={clsx(isOpen ? 'p-6' : 'p-2 pt-6')}>
@@ -34,8 +34,8 @@ const NavMenu = () => {
           </div>
         )}
       </div>
-    </div>
+    </aside>
   );
 };
 
-export default NavMenu;
+export default NavMenuDesktop;
