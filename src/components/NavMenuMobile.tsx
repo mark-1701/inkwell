@@ -1,7 +1,6 @@
 'use client';
 
 import clsx from 'clsx';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { PiSidebar } from 'react-icons/pi';
@@ -31,8 +30,8 @@ const NavMenuMobile = () => {
           <button
             className="cursor-pointer text-left"
             onClick={() => {
-              router.push('/posts');
               setIsOpen(false);
+              router.push('/posts');
             }}
           >
             Blog
@@ -40,8 +39,8 @@ const NavMenuMobile = () => {
           <button
             className="cursor-pointer text-left"
             onClick={() => {
-              router.push('/dashboard/posts');
               setIsOpen(false);
+              router.push('/dashboard/posts');
             }}
           >
             Gestionar posts

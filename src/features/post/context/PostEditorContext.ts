@@ -5,6 +5,7 @@ import { createContext, useContext } from 'react';
 
 type PostEditorContextValue = {
   insertImage: InsertImage;
+  isUploadingImage: boolean;
 };
 
 export const PostEditorContext = createContext<PostEditorContextValue | null>(

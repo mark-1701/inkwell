@@ -15,12 +15,12 @@ const EditPostContent = ({ postId }: EditPostContentProps) => {
   if (!editor) return <p>Cargando editor...</p>;
 
   return (
-    <PostEditorContext.Provider value={{ insertImage }}>
+    <PostEditorContext.Provider value={{ insertImage, isUploadingImage }}>
       <div className="flex h-full flex-col gap-8">
         <h1 className="text-3xl font-bold">Crear nuevo post</h1>
         <div className="flex min-h-0 flex-1 gap-4">
           <div className="relative flex-1">
-            {/* loader */}
+            {/* image loader */}
             {isUploadingImage && (
               <div
                 className="absolute top-1/2 left-1/2 flex h-[80px] w-[80px]
