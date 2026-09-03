@@ -10,8 +10,6 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { getTextEditorContent, getTextEditorMediaKeys } from '../utils';
 
-// todo: bloquear el botón cuando se esta guardando el artículo
-
 type Inputs = {
   title: string;
 };

@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { uploadImageToStorage } from '@/services/storage/r2';
 
 // todo: implementar mécanismos de seguridad para evitar las múltiples solicitudes
-// todo: insertar una imagen temporal (spinner de carga)
 
 export const useInsertImage = (postId: string) => {
   const [isUploadingImage, setIsUploadingImage] = useState(false);
