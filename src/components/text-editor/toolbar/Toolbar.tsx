@@ -19,15 +19,11 @@ export const ToolBar = ({ editor }: ToolbarProps) => {
   const editorState = useToolbarState(editor);
 
   return (
-    <div className="flex overflow-hidden border-b-2 border-b-gray-300 p-1">
+    <div className="border-b-2 border-b-gray-300 p-1">
       <div className="flex divide-x divide-gray-200">
         {tools.map(Tool => (
           <ToolBarGroup key={Tool.name}>
-            <Tool
-              editor={editor}
-              toolbarState={editorState}
-              iconSize={18}
-            />
+            <Tool editor={editor} toolbarState={editorState} iconSize={18} />
           </ToolBarGroup>
         ))}
       </div>

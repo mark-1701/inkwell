@@ -10,7 +10,7 @@ const PotsPage = async () => {
       {resp.data.map(post => (
         <div key={post.id}>
           <Link
-            href={`/posts/${post.id}`}
+            href={`/dashboard/blog/${post.id}`}
             className="text-blue-500 hover:cursor-pointer hover:underline"
           >
             {post.title ?? 'Sin título'}

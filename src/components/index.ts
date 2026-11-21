@@ -1,4 +1,3 @@
-export * from './PostContent';
 export * from './text-editor/TextEditor';
 export * from './NavMenuDesktop';
 export * from './Dialog';

@@ -9,7 +9,7 @@ import { replaceDraftPost } from '@/actions/post/replace-draft-post';
 import Dialog from '@/components/Dialog';
 import { initialPostData } from '../data/initialPostData';
 
-const CreatePostButton = () => {
+export const CreatePostButton = () => {
   const router = useRouter();
   const [visible, setVisible] = useState(false);
   const [currentPostId, setCurrentPostId] = useState<string | null>(null);
@@ -39,6 +39,7 @@ const CreatePostButton = () => {
     }
 
     await createNewPost();
+
     setIsCheakingDraftPost(false);
   };
 
@@ -89,8 +90,7 @@ const CreatePostButton = () => {
   };
 
   const openPost = (postId: string) => {
-    const params = new URLSearchParams({ postId });
-    router.push(`/dashboard/posts/edit?${params.toString()}`);
+    router.push(`/dashboard/posts/${postId}/edit`);
   };
 
   const footerContent = (
@@ -119,7 +119,7 @@ const CreatePostButton = () => {
         onClick={handleCheckDraftPost}
         disabled={isCheakingDraftPost}
       >
-        Crear nuevo post
+        Crear nuevo
       </button>
 
       <Dialog
@@ -134,5 +134,3 @@ const CreatePostButton = () => {
     </div>
   );
 };
-
-export default CreatePostButton;

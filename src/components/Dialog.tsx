@@ -10,16 +10,9 @@ type DialogProps = {
   footer: React.ReactNode;
   onHide?: () => void;
   children: React.ReactNode;
-  // ¿Como tipar un componente que se recibe mediante props?
 };
 
-const Dialog = ({
-  header,
-  visible,
-  onHide,
-  footer,
-  children
-}: DialogProps) => {
+const Dialog = ({ header, visible, onHide, footer, children }: DialogProps) => {
   return (
     <div
       className={clsx(

@@ -19,7 +19,7 @@ type PostSummaryProps = {
   postId: string;
 };
 
-const PostSummary = ({ editor, postId }: PostSummaryProps) => {
+export const PostSummary = ({ editor, postId }: PostSummaryProps) => {
   const router = useRouter();
 
   const draftPost = usePostStore(state =>
@@ -68,7 +68,8 @@ const PostSummary = ({ editor, postId }: PostSummaryProps) => {
   return (
     <div className="h-full w-90 rounded-md border border-gray-200 bg-gray-50">
       <form
-        className="flex flex-col gap-8 border-b border-gray-200 bg-white p-4 pb-8 rounded-b-md"
+        className="flex flex-col gap-8 rounded-b-md border-b border-gray-200
+          bg-white p-4 pb-8"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div>
@@ -124,8 +125,6 @@ const PostSummary = ({ editor, postId }: PostSummaryProps) => {
     </div>
   );
 };
-
-export default PostSummary;
 
 // ? sincronizar el input de title si ocurre algún cambio en el state de
 // ? del borrador almacenado en zustand.

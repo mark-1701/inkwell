@@ -31,7 +31,16 @@ const NavMenuMobile = () => {
             className="cursor-pointer text-left"
             onClick={() => {
               setIsOpen(false);
-              router.push('/posts');
+              router.push('/dashboard');
+            }}
+          >
+            Inicio
+          </button>
+          <button
+            className="cursor-pointer text-left"
+            onClick={() => {
+              setIsOpen(false);
+              router.push('/dashboard/blog');
             }}
           >
             Blog
@@ -43,7 +52,7 @@ const NavMenuMobile = () => {
               router.push('/dashboard/posts');
             }}
           >
-            Gestionar posts
+            Gestionar artículos
           </button>
         </div>
       </aside>

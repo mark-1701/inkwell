@@ -1,5 +1,5 @@
 import { getPostById } from '@/actions';
-import PostContent from '../../../../components/PostContent';
+import { PostContent } from '@/features/post/components';
 
 type PostIdPage = {
   params: {
@@ -14,7 +14,7 @@ const PostIdPage = async ({ params }: PostIdPage) => {
 
   if (!resp.ok) return <p>No existe</p>;
 
-  return <PostContent content={resp.data.content} />;
+  return <PostContent post={resp.data} />;
 };
 
 export default PostIdPage;

@@ -29,8 +29,9 @@ const NavMenuDesktop = () => {
 
         {isOpen && (
           <div className="flex flex-col gap-4">
-            <Link href="/posts">Blog</Link>
-            <Link href="/dashboard/posts">Gestionar posts</Link>
+            <Link href="/dashboard">Inicio</Link>
+            <Link href="/dashboard/blog">Blog</Link>
+            <Link href="/dashboard/posts">Gestionar artículos</Link>
           </div>
         )}
       </div>

@@ -1,7 +1,9 @@
 'use client';
 
 import { TextEditor } from '@/components/text-editor/TextEditor';
-import PostSummary from '../components/PostSummary';
+import { PostSummary } from '../components';
+import { BackToListButton } from '../components/BackToListButton';
+import { PostTitle } from '../components/PostTitle';
 import { PostEditorContext } from '../context/PostEditorContext';
 import { useCreatePostEditor } from '../hooks/useCreatePostEditor';
 
@@ -16,10 +18,11 @@ const EditPostContent = ({ postId }: EditPostContentProps) => {
 
   return (
     <PostEditorContext.Provider value={{ insertImage, isUploadingImage }}>
-      <div className="flex h-full flex-col gap-8">
-        <h1 className="text-3xl font-bold">Crear nuevo post</h1>
-        <div className="flex min-h-0 flex-1 gap-4">
-          <div className="relative flex-1">
+      <div className="flex h-full flex-col">
+        <BackToListButton />
+
+        <div className="flex h-full min-h-0 gap-4">
+          <div className="relative flex flex-1 flex-col">
             {/* image loader */}
             {isUploadingImage && (
               <div
@@ -31,9 +34,14 @@ const EditPostContent = ({ postId }: EditPostContentProps) => {
               </div>
             )}
 
+            <PostTitle postId={postId} />
+
             {/* editor de texto */}
-            <TextEditor editor={editor} />
+            <div className="min-h-0 flex-1">
+              <TextEditor editor={editor} />
+            </div>
           </div>
+
           <div>
             <PostSummary editor={editor} postId={postId} />
           </div>

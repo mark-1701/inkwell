@@ -6,6 +6,8 @@ type TextEditorProps = {
   editor: Editor;
 };
 
+// todo: el botón deshacer esta encendido en el arranque en el último registro
+
 export const TextEditor = ({ editor }: TextEditorProps) => {
   return (
     <div className="flex h-full flex-col rounded-md border border-gray-300">
