@@ -4,8 +4,8 @@ import { ToastProvider } from '../providers/ToastProvider';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Mark Playground',
-  description: 'Zona de pruebas para mi próximo proyecto'
+  title: 'Inkwell',
+  description: 'CMS minimalista para blogs con artículos personalizados'
 };
 
 export default function RootLayout({

@@ -1,7 +1,6 @@
 'use client';
 
-import { TextEditor } from '@/components/text-editor/TextEditor';
-import { PostSummary } from '../components';
+import { PostSummary, TextEditor } from '../components';
 import { BackToListButton } from '../components/BackToListButton';
 import { PostTitle } from '../components/PostTitle';
 import { PostEditorContext } from '../context/PostEditorContext';

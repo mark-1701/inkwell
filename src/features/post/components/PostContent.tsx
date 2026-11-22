@@ -1,8 +1,8 @@
 'use client';
 
 import type { Post } from '@/app/generated/prisma/browser';
-import { createHTML } from '@/utils';
 import { useEffect, useState } from 'react';
+import { createHTML } from '../utils';
 import { BackToListButton } from './BackToListButton';
 
 type PostContentProps = {

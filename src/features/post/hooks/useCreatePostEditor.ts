@@ -1,7 +1,7 @@
 'use client';
 
 import { useEditor } from '@tiptap/react';
-import { getExtensions } from '@/components/text-editor/config';
+import { getExtensions } from '../components/text-editor/config';
 import { useInsertImage } from './useInsertImage';
 import { useLoadDraftPost } from './useLoadDraftPost';
 import { useSyncEditorToDraft } from './useSyncEditorToDraft';

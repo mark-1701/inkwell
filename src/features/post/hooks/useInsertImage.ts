@@ -1,10 +1,10 @@
 'use client';
 
 import { registerMedia, updateMediaUrl } from '@/actions';
-import { generateImageKey } from '@/utils';
 import type { Editor } from '@tiptap/core';
 import { useState } from 'react';
 import { uploadImageToStorage } from '@/services/storage/r2';
+import { generateImageKey } from '../utils';
 
 // todo: implementar mécanismos de seguridad para evitar las múltiples solicitudes
 
